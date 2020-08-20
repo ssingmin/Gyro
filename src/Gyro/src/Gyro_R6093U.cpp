@@ -8,10 +8,11 @@
 #include "std_msgs/String.h"
 #include "ros/time.h"
 
-#define RX_packet_lenth 11
+#define RX_packet_lenth 33
 #define TX_packet_lenth 5
 #define num_output 3
-
+	
+	char r_buf[1024];
 
 std::string node_name("Gyro_R6093U");
 
@@ -108,26 +109,35 @@ class Gyro
 
 			if(_serialPort) 
 				result=_serialPort->Read((uint8_t *)&buf[0],readcount);
+				//printf("ssingmintesttesttest:  %d\n, result");
 				
 	
 			if (result == PACKET_SIZE)
 			{
-				int retval = R6093U_parse_data((unsigned char *)&buf[0], PACKET_SIZE);
+
+
+					for (int i=0;i<33;i++) {
+            
+					ParseData(buf[i]);
+					}
+
+
+				//int retval = R6093U_parse_data((unsigned char *)&buf[0], PACKET_SIZE);
 				
 				//printf("\n");
 
-				if (retval == 1 ) {  // need to soft reset (header...error)
-					//gyro_reset_command();
-					ROS_WARN ("gyro_reset_command !!!");
-					return ;
+				// if (retval == 1 ) {  // need to soft reset (header...error)
+				// 	//gyro_reset_command();
+				// 	ROS_WARN ("gyro_reset_command !!!");
+				// 	return ;
 
-				} else if ( retval == 2)  // need to hard reset..
-				{   // only CRC error ...
-					//gyro_reset_command();
-					//HardResetCommand();
-					ROS_WARN ("HardResetCommand !!!");
-					return ;
-				}
+				// } else if ( retval == 2)  // need to hard reset..
+				// {   // only CRC error ...
+				// 	//gyro_reset_command();
+				// 	//HardResetCommand();
+				// 	ROS_WARN ("HardResetCommand !!!");
+				// 	return ;
+				// }
 			}
 			flushCount++;
 			if(flushCount == num_output) {flushCount=0;		flushSerial();}
@@ -142,7 +152,58 @@ class Gyro
 				_serialPort->Write((const uint8_t *)&datas[0],length);
 			}
 		}
-			
+
+
+
+		void ParseData(char chr)
+		{
+		float a[3],w[3],Angle[3],h[3];
+
+		static char chrBuf[100];
+		static unsigned char chrCnt=0;
+		signed short sData[4];
+		unsigned char i;
+		char cTemp=0;
+		time_t now;
+		chrBuf[chrCnt++]=chr;
+		
+		if (chrCnt<11) return;
+		for (i=0;i<10;i++) cTemp+=chrBuf[i];
+		if ((chrBuf[0]!=0x55)||((chrBuf[1]&0x50)!=0x50)||(cTemp!=chrBuf[10])) {
+			printf("Error:%x %x\r\n",chrBuf[0],chrBuf[1]);
+			memcpy(&chrBuf[0],&chrBuf[1],10);
+			chrCnt--;
+			return;
+			}
+		
+		memcpy(&sData[0],&chrBuf[2],8);
+
+		switch(chrBuf[1])
+		{
+				case 0x51:
+					for (i=0;i<3;i++) a[i] = (float)sData[i]/32768.0*16.0;
+					time(&now);
+					printf("\r\nT:%s a:%6.3f %6.3f %6.3f ",asctime(localtime(&now)),a[0],a[1],a[2]);
+					
+					break;
+				case 0x52:
+					for (i=0;i<3;i++) w[i] = (float)sData[i]/32768.0*2000.0;
+					printf("w:%7.3f %7.3f %7.3f ",w[0],w[1],w[2]);					
+					break;
+				case 0x53:
+					for (i=0;i<3;i++) Angle[i] = (float)sData[i]/32768.0*180.0;
+					printf("A:%7.3f %7.3f %7.3f ",Angle[0],Angle[1],Angle[2]);
+					break;
+				case 0x54:
+					for (i=0;i<3;i++) h[i] = (float)sData[i];
+					printf("h:%4.0f %4.0f %4.0f ",h[0],h[1],h[2]);
+					
+					break;
+		}		
+		chrCnt=0;		
+		}
+
+
 		
 		int R6093U_parse_data(uint8_t *data_packet, uint16_t length)
 		{
@@ -189,6 +250,7 @@ class Gyro
 		//memcpy(&header, data_packet, sizeof (short));
 		uint8_t sort_packet[PACKET_SIZE];
 
+
 		for(int i=0;i<PACKET_BUF_SIZE-1;i++)
 		{
 			if(data_packet[i]==0x55)
@@ -197,6 +259,7 @@ class Gyro
 				break;
 			}
 		}
+
 
 		header= sort_packet[0];
 
@@ -216,10 +279,13 @@ class Gyro
 			
 			checksum_packet = (sort_packet[PACKET_SIZE-1]);
 			checksum=0;
+
 			for(int s=0; s<(PACKET_SIZE-1); s++){	//Checksum: Sum=0x55+0x51+AxH+AxL+AyH+AyL+AzH+AzL+TH+TL
 
 			checksum+=sort_packet[s];
 			}
+
+			
 
 			if(checksum_packet != checksum)
 			{
@@ -232,6 +298,7 @@ class Gyro
 				checksum = 0;
 				return 2;
 			}
+
 
 
 	//data_packet[1]=kind of Output
@@ -299,9 +366,13 @@ int main(int argc, char **argv)
     std::string portName("/dev/ttyUSB0");
 	int baudRate=115200;
 	int count = 0;
+
+
+
+
 	uint8_t HWT905_cmd[TX_packet_lenth] ={0xFF, 0xAA, 0x22, 0x01, 0x00};//sleep cmd
 
- 	ros::Rate loop_rate(1000);
+ 	ros::Rate loop_rate(100);
 	// MsgTutorial 메시지 파일 형식으로 msg 라는 메시지를 선언
 	//ros_tutorials_topic::MsgTutorial msg;
 	// 메시지에 사용될 변수 선언
