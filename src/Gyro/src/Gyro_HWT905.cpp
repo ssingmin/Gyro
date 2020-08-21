@@ -13,7 +13,8 @@
 #define num_output 3
 #define RX_packet_lenth 33	//11(packet length) * 3 (number of packet)
 #define TX_packet_lenth 5
-#define smleetest 1
+
+#define smleetest 1 //after complete, remove 
 	
 
 std::string node_name("Gyro_HWT905");
@@ -56,7 +57,7 @@ class Gyro
 			_ph.param<std::string>("portname", m_portName, portName_);
 			_ph.param<int32_t>("baudrate", m_baudRate, portBaudrate_);
 			
-			pub_Gyrodata=_ph.advertise<Gyro_sensor::Gyro_msg>("/Gyro/WT905",10);
+			pub_Gyrodata=_ph.advertise<Gyro_sensor::Gyro_msg>("/Gyro/HWT905",10);
 
 
 			portOpen();
@@ -144,13 +145,15 @@ class Gyro
 
 		void ParseData(char chr)
 		{
-		float a[3],w[3],Angle[3],h[3];
-
+			//float a[3],w[3],Angle[3],h[3];
+			float a[3],w[3],h[3];
+			float Angle[3];
 			Gyro_sensor::Gyro_msg gyro_data;
 		
 			static char chrBuf[100];
 			static unsigned char chrCnt=0;
 			signed short sData[4];
+			unsigned short uData[4];
 			unsigned char i;
 			char cTemp=0;
 			time_t now;
@@ -167,6 +170,7 @@ class Gyro
 				}
 		
 		memcpy(&sData[0],&chrBuf[2],8);
+		memcpy(&uData[0],&chrBuf[2],8); //for sign of angle
 
 		switch(chrBuf[1])
 		{
@@ -181,7 +185,7 @@ class Gyro
 					printf("w:%7.3f %7.3f %7.3f ",w[0],w[1],w[2]);					
 					break;
 				case 0x53:
-					for (i=0;i<3;i++) Angle[i] = (float)sData[i]/32768.0*180.0;
+					for (i=0;i<3;i++) Angle[i] = (float)uData[i]/32768.0*180.0;
 					printf("A:%7.3f %7.3f %7.3f ",Angle[0],Angle[1],Angle[2]);
 					break;
 				case 0x54:
@@ -214,6 +218,9 @@ int main(int argc, char **argv)
 {
 	ros::init(argc,argv,node_name);
 	ros::NodeHandle nh;
+	
+	FILE *fp;
+
 
 	#if smleetest
   		std::string portName("/dev/ttyUSB0");
@@ -224,7 +231,7 @@ int main(int argc, char **argv)
 	int baudRate=115200;
 	int count = 0;
 
-	uint8_t HWT905_cmd[TX_packet_lenth] ={0xFF, 0xAA, 0x22, 0x01, 0x00};//sleep cmd
+	uint8_t HWT905_cmd[TX_packet_lenth] ={0xFF, 0xAA, 0x22, 0x01, 0x00};//sleep cmd testtest
 
  	ros::Rate loop_rate(100);
 	// MsgTutorial 메시지 파일 형식으로 msg 라는 메시지를 선언
@@ -243,7 +250,18 @@ int main(int argc, char **argv)
 		ROS_INFO("fail");
 
     int result = 0;
+	
+			 HWT905_cmd[2]=0x1;//5.2.3 Calibrate
+			 HWT905_cmd[3]=0x0;
+			 HWT905_cmd[4]=0x0;
+			// IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
 
+
+	///log 
+	fp = fopen("Record.txt","w");
+	fprintf(fp,"test\n");
+
+	///log 
  	while (ros::ok())
     {
 		
@@ -260,10 +278,22 @@ int main(int argc, char **argv)
 			// HWT905_cmd[3]=0x6A;
 			// IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
 
-			 HWT905_cmd[2]=0x0a;//Z axis angular velocity bias TESTTEST
+			//  HWT905_cmd[2]=0x0a;//Z axis angular velocity bias TESTTEST
+			//  HWT905_cmd[3]=0x0;
+			//  HWT905_cmd[4]=0x0;
+			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
+
+			 HWT905_cmd[2]=0x3d;//Z axis Angle testtest
 			 HWT905_cmd[3]=0x0;
 			 HWT905_cmd[4]=0x0;
 			 IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
+
+
+			 HWT905_cmd[2]=0x3e;//Z axis Angle testtest
+			 HWT905_cmd[3]=0x0;
+			 HWT905_cmd[4]=0x0;
+			 IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
+
 
 			 HWT905_cmd[2]=0x3f;//Z axis Angle testtest
 			 HWT905_cmd[3]=0x0;
