@@ -251,17 +251,6 @@ int main(int argc, char **argv)
 
     int result = 0;
 	
-			 HWT905_cmd[2]=0x1;//5.2.3 Calibrate
-			 HWT905_cmd[3]=0x0;
-			 HWT905_cmd[4]=0x0;
-			// IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
-
-
-	///log 
-	fp = fopen("Record.txt","w");
-	fprintf(fp,"test\n");
-
-	///log 
  	while (ros::ok())
     {
 		
@@ -283,22 +272,22 @@ int main(int argc, char **argv)
 			//  HWT905_cmd[4]=0x0;
 			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
 
-			 HWT905_cmd[2]=0x3d;//Z axis Angle testtest
-			 HWT905_cmd[3]=0x0;
-			 HWT905_cmd[4]=0x0;
-			 IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
+			//  HWT905_cmd[2]=0x3d;//Z axis Angle testtest
+			//  HWT905_cmd[3]=0x0;
+			//  HWT905_cmd[4]=0x0;
+			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
 
 
-			 HWT905_cmd[2]=0x3e;//Z axis Angle testtest
-			 HWT905_cmd[3]=0x0;
-			 HWT905_cmd[4]=0x0;
-			 IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
+			//  HWT905_cmd[2]=0x3e;//Z axis Angle testtest
+			//  HWT905_cmd[3]=0x0;
+			//  HWT905_cmd[4]=0x0;
+			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
 
 
-			 HWT905_cmd[2]=0x3f;//Z axis Angle testtest
-			 HWT905_cmd[3]=0x0;
-			 HWT905_cmd[4]=0x0;
-			 IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
+			//  HWT905_cmd[2]=0x3f;//Z axis Angle testtest
+			//  HWT905_cmd[3]=0x0;
+			//  HWT905_cmd[4]=0x0;
+			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
 
 
 		}
