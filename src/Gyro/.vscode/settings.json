@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.txt": "shellscript",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp"
+    }
+}

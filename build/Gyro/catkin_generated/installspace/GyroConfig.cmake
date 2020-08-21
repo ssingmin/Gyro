@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(Gyro_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT " " STREQUAL " ")
+if(NOT "include " STREQUAL " ")
   set(Gyro_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/smlee/Gyro_ws/install/lib;/home/smlee/Gyro_ws 1/devel/lib;/home/smlee/Gyro_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/smlee/Gyro_ws/install/lib;/home/smlee/Gyro_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -177,7 +177,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(Gyro_EXPORTED_TARGETS "")
+set(Gyro_EXPORTED_TARGETS "Gyro_generate_messages_cpp;Gyro_generate_messages_eus;Gyro_generate_messages_lisp;Gyro_generate_messages_nodejs;Gyro_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${Gyro_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -214,7 +214,7 @@ foreach(depend ${depends})
   list(APPEND Gyro_EXPORTED_TARGETS ${${Gyro_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "Gyro-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${Gyro_DIR}/${extra})

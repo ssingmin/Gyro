@@ -56,18 +56,6 @@ CMAKE_BINARY_DIR = /home/smlee/Gyro_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -101,6 +89,18 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -168,6 +168,126 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_genpy.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_genpy.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_genpy.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_genpy: Gyro/CMakeFiles/Gyro_sensor_genpy.dir/rule
+
+.PHONY : Gyro_sensor_genpy
+
+# fast build rule for target.
+Gyro_sensor_genpy/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_genpy.dir/build.make Gyro/CMakeFiles/Gyro_sensor_genpy.dir/build
+.PHONY : Gyro_sensor_genpy/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_gennodejs.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_gennodejs.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_gennodejs.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_gennodejs: Gyro/CMakeFiles/Gyro_sensor_gennodejs.dir/rule
+
+.PHONY : Gyro_sensor_gennodejs
+
+# fast build rule for target.
+Gyro_sensor_gennodejs/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_gennodejs.dir/build.make Gyro/CMakeFiles/Gyro_sensor_gennodejs.dir/build
+.PHONY : Gyro_sensor_gennodejs/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_generate_messages_nodejs.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_generate_messages_nodejs.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_generate_messages_nodejs: Gyro/CMakeFiles/Gyro_sensor_generate_messages_nodejs.dir/rule
+
+.PHONY : Gyro_sensor_generate_messages_nodejs
+
+# fast build rule for target.
+Gyro_sensor_generate_messages_nodejs/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_generate_messages_nodejs.dir/build.make Gyro/CMakeFiles/Gyro_sensor_generate_messages_nodejs.dir/build
+.PHONY : Gyro_sensor_generate_messages_nodejs/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_genlisp.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_genlisp.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_genlisp.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_genlisp: Gyro/CMakeFiles/Gyro_sensor_genlisp.dir/rule
+
+.PHONY : Gyro_sensor_genlisp
+
+# fast build rule for target.
+Gyro_sensor_genlisp/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_genlisp.dir/build.make Gyro/CMakeFiles/Gyro_sensor_genlisp.dir/build
+.PHONY : Gyro_sensor_genlisp/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_generate_messages_lisp.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_generate_messages_lisp.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_generate_messages_lisp: Gyro/CMakeFiles/Gyro_sensor_generate_messages_lisp.dir/rule
+
+.PHONY : Gyro_sensor_generate_messages_lisp
+
+# fast build rule for target.
+Gyro_sensor_generate_messages_lisp/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_generate_messages_lisp.dir/build.make Gyro/CMakeFiles/Gyro_sensor_generate_messages_lisp.dir/build
+.PHONY : Gyro_sensor_generate_messages_lisp/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_gencpp.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_gencpp.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_gencpp.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_gencpp: Gyro/CMakeFiles/Gyro_sensor_gencpp.dir/rule
+
+.PHONY : Gyro_sensor_gencpp
+
+# fast build rule for target.
+Gyro_sensor_gencpp/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_gencpp.dir/build.make Gyro/CMakeFiles/Gyro_sensor_gencpp.dir/build
+.PHONY : Gyro_sensor_gencpp/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_generate_messages_cpp.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_generate_messages_cpp.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_generate_messages_cpp: Gyro/CMakeFiles/Gyro_sensor_generate_messages_cpp.dir/rule
+
+.PHONY : Gyro_sensor_generate_messages_cpp
+
+# fast build rule for target.
+Gyro_sensor_generate_messages_cpp/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_generate_messages_cpp.dir/build.make Gyro/CMakeFiles/Gyro_sensor_generate_messages_cpp.dir/build
+.PHONY : Gyro_sensor_generate_messages_cpp/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/_Gyro_sensor_generate_messages_check_deps_Gyro_msg.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/_Gyro_sensor_generate_messages_check_deps_Gyro_msg.dir/rule
+.PHONY : Gyro/CMakeFiles/_Gyro_sensor_generate_messages_check_deps_Gyro_msg.dir/rule
+
+# Convenience name for target.
+_Gyro_sensor_generate_messages_check_deps_Gyro_msg: Gyro/CMakeFiles/_Gyro_sensor_generate_messages_check_deps_Gyro_msg.dir/rule
+
+.PHONY : _Gyro_sensor_generate_messages_check_deps_Gyro_msg
+
+# fast build rule for target.
+_Gyro_sensor_generate_messages_check_deps_Gyro_msg/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/_Gyro_sensor_generate_messages_check_deps_Gyro_msg.dir/build.make Gyro/CMakeFiles/_Gyro_sensor_generate_messages_check_deps_Gyro_msg.dir/build
+.PHONY : _Gyro_sensor_generate_messages_check_deps_Gyro_msg/fast
+
+# Convenience name for target.
 Gyro/CMakeFiles/roscpp_generate_messages_py.dir/rule:
 	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/roscpp_generate_messages_py.dir/rule
 .PHONY : Gyro/CMakeFiles/roscpp_generate_messages_py.dir/rule
@@ -196,6 +316,21 @@ roscpp_generate_messages_eus: Gyro/CMakeFiles/roscpp_generate_messages_eus.dir/r
 roscpp_generate_messages_eus/fast:
 	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/roscpp_generate_messages_eus.dir/build.make Gyro/CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_geneus.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_geneus.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_geneus.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_geneus: Gyro/CMakeFiles/Gyro_sensor_geneus.dir/rule
+
+.PHONY : Gyro_sensor_geneus
+
+# fast build rule for target.
+Gyro_sensor_geneus/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_geneus.dir/build.make Gyro/CMakeFiles/Gyro_sensor_geneus.dir/build
+.PHONY : Gyro_sensor_geneus/fast
 
 # Convenience name for target.
 Gyro/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
@@ -288,6 +423,21 @@ rosgraph_msgs_generate_messages_lisp/fast:
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_generate_messages_eus.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_generate_messages_eus.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_generate_messages_eus: Gyro/CMakeFiles/Gyro_sensor_generate_messages_eus.dir/rule
+
+.PHONY : Gyro_sensor_generate_messages_eus
+
+# fast build rule for target.
+Gyro_sensor_generate_messages_eus/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_generate_messages_eus.dir/build.make Gyro/CMakeFiles/Gyro_sensor_generate_messages_eus.dir/build
+.PHONY : Gyro_sensor_generate_messages_eus/fast
+
+# Convenience name for target.
 Gyro/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
 	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 .PHONY : Gyro/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
@@ -348,19 +498,49 @@ std_msgs_generate_messages_eus/fast:
 .PHONY : std_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-Gyro/CMakeFiles/Gyro_node.dir/rule:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_node.dir/rule
-.PHONY : Gyro/CMakeFiles/Gyro_node.dir/rule
+Gyro/CMakeFiles/Gyro_sensor_node.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_node.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_node.dir/rule
 
 # Convenience name for target.
-Gyro_node: Gyro/CMakeFiles/Gyro_node.dir/rule
+Gyro_sensor_node: Gyro/CMakeFiles/Gyro_sensor_node.dir/rule
 
-.PHONY : Gyro_node
+.PHONY : Gyro_sensor_node
 
 # fast build rule for target.
-Gyro_node/fast:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/build
-.PHONY : Gyro_node/fast
+Gyro_sensor_node/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/build
+.PHONY : Gyro_sensor_node/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_generate_messages.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_generate_messages.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_generate_messages.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_generate_messages: Gyro/CMakeFiles/Gyro_sensor_generate_messages.dir/rule
+
+.PHONY : Gyro_sensor_generate_messages
+
+# fast build rule for target.
+Gyro_sensor_generate_messages/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_generate_messages.dir/build.make Gyro/CMakeFiles/Gyro_sensor_generate_messages.dir/build
+.PHONY : Gyro_sensor_generate_messages/fast
+
+# Convenience name for target.
+Gyro/CMakeFiles/Gyro_sensor_generate_messages_py.dir/rule:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Gyro/CMakeFiles/Gyro_sensor_generate_messages_py.dir/rule
+.PHONY : Gyro/CMakeFiles/Gyro_sensor_generate_messages_py.dir/rule
+
+# Convenience name for target.
+Gyro_sensor_generate_messages_py: Gyro/CMakeFiles/Gyro_sensor_generate_messages_py.dir/rule
+
+.PHONY : Gyro_sensor_generate_messages_py
+
+# fast build rule for target.
+Gyro_sensor_generate_messages_py/fast:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_generate_messages_py.dir/build.make Gyro/CMakeFiles/Gyro_sensor_generate_messages_py.dir/build
+.PHONY : Gyro_sensor_generate_messages_py/fast
 
 # Convenience name for target.
 Gyro/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
@@ -407,32 +587,32 @@ std_msgs_generate_messages_py/fast:
 	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/std_msgs_generate_messages_py.dir/build.make Gyro/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
-src/Gyro_R6093U.o: src/Gyro_R6093U.cpp.o
+src/Gyro_HWT905.o: src/Gyro_HWT905.cpp.o
 
-.PHONY : src/Gyro_R6093U.o
+.PHONY : src/Gyro_HWT905.o
 
 # target to build an object file
-src/Gyro_R6093U.cpp.o:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/src/Gyro_R6093U.cpp.o
-.PHONY : src/Gyro_R6093U.cpp.o
+src/Gyro_HWT905.cpp.o:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/src/Gyro_HWT905.cpp.o
+.PHONY : src/Gyro_HWT905.cpp.o
 
-src/Gyro_R6093U.i: src/Gyro_R6093U.cpp.i
+src/Gyro_HWT905.i: src/Gyro_HWT905.cpp.i
 
-.PHONY : src/Gyro_R6093U.i
+.PHONY : src/Gyro_HWT905.i
 
 # target to preprocess a source file
-src/Gyro_R6093U.cpp.i:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/src/Gyro_R6093U.cpp.i
-.PHONY : src/Gyro_R6093U.cpp.i
+src/Gyro_HWT905.cpp.i:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/src/Gyro_HWT905.cpp.i
+.PHONY : src/Gyro_HWT905.cpp.i
 
-src/Gyro_R6093U.s: src/Gyro_R6093U.cpp.s
+src/Gyro_HWT905.s: src/Gyro_HWT905.cpp.s
 
-.PHONY : src/Gyro_R6093U.s
+.PHONY : src/Gyro_HWT905.s
 
 # target to generate assembly for a file
-src/Gyro_R6093U.cpp.s:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/src/Gyro_R6093U.cpp.s
-.PHONY : src/Gyro_R6093U.cpp.s
+src/Gyro_HWT905.cpp.s:
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/src/Gyro_HWT905.cpp.s
+.PHONY : src/Gyro_HWT905.cpp.s
 
 src/serial.o: src/serial.cpp.o
 
@@ -440,7 +620,7 @@ src/serial.o: src/serial.cpp.o
 
 # target to build an object file
 src/serial.cpp.o:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/src/serial.cpp.o
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/src/serial.cpp.o
 .PHONY : src/serial.cpp.o
 
 src/serial.i: src/serial.cpp.i
@@ -449,7 +629,7 @@ src/serial.i: src/serial.cpp.i
 
 # target to preprocess a source file
 src/serial.cpp.i:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/src/serial.cpp.i
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/src/serial.cpp.i
 .PHONY : src/serial.cpp.i
 
 src/serial.s: src/serial.cpp.s
@@ -458,7 +638,7 @@ src/serial.s: src/serial.cpp.s
 
 # target to generate assembly for a file
 src/serial.cpp.s:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/src/serial.cpp.s
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/src/serial.cpp.s
 .PHONY : src/serial.cpp.s
 
 src/serial_baudrate.o: src/serial_baudrate.cpp.o
@@ -467,7 +647,7 @@ src/serial_baudrate.o: src/serial_baudrate.cpp.o
 
 # target to build an object file
 src/serial_baudrate.cpp.o:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/src/serial_baudrate.cpp.o
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/src/serial_baudrate.cpp.o
 .PHONY : src/serial_baudrate.cpp.o
 
 src/serial_baudrate.i: src/serial_baudrate.cpp.i
@@ -476,7 +656,7 @@ src/serial_baudrate.i: src/serial_baudrate.cpp.i
 
 # target to preprocess a source file
 src/serial_baudrate.cpp.i:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/src/serial_baudrate.cpp.i
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/src/serial_baudrate.cpp.i
 .PHONY : src/serial_baudrate.cpp.i
 
 src/serial_baudrate.s: src/serial_baudrate.cpp.s
@@ -485,7 +665,7 @@ src/serial_baudrate.s: src/serial_baudrate.cpp.s
 
 # target to generate assembly for a file
 src/serial_baudrate.cpp.s:
-	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_node.dir/build.make Gyro/CMakeFiles/Gyro_node.dir/src/serial_baudrate.cpp.s
+	cd /home/smlee/Gyro_ws/build && $(MAKE) -f Gyro/CMakeFiles/Gyro_sensor_node.dir/build.make Gyro/CMakeFiles/Gyro_sensor_node.dir/src/serial_baudrate.cpp.s
 .PHONY : src/serial_baudrate.cpp.s
 
 # Help Target
@@ -494,14 +674,23 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... Gyro_sensor_genpy"
+	@echo "... Gyro_sensor_gennodejs"
+	@echo "... Gyro_sensor_generate_messages_nodejs"
+	@echo "... Gyro_sensor_genlisp"
+	@echo "... Gyro_sensor_generate_messages_lisp"
+	@echo "... Gyro_sensor_gencpp"
+	@echo "... install/strip"
+	@echo "... Gyro_sensor_generate_messages_cpp"
+	@echo "... _Gyro_sensor_generate_messages_check_deps_Gyro_msg"
 	@echo "... list_install_components"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... edit_cache"
+	@echo "... Gyro_sensor_geneus"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
@@ -509,17 +698,20 @@ help:
 	@echo "... install"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... Gyro_sensor_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_eus"
-	@echo "... Gyro_node"
+	@echo "... Gyro_sensor_node"
+	@echo "... Gyro_sensor_generate_messages"
+	@echo "... Gyro_sensor_generate_messages_py"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_py"
-	@echo "... src/Gyro_R6093U.o"
-	@echo "... src/Gyro_R6093U.i"
-	@echo "... src/Gyro_R6093U.s"
+	@echo "... src/Gyro_HWT905.o"
+	@echo "... src/Gyro_HWT905.i"
+	@echo "... src/Gyro_HWT905.s"
 	@echo "... src/serial.o"
 	@echo "... src/serial.i"
 	@echo "... src/serial.s"

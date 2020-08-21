@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/smlee/Gyro_ws/devel/include/Gyro/Gyro_msg.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/smlee/Gyro_ws/src/Gyro/src/Gyro_R6093U.cpp
 ros/ros.h
 -
@@ -15,6 +31,8 @@ string.h
 -
 serial.hpp
 /home/smlee/Gyro_ws/src/Gyro/src/serial.hpp
+Gyro/Gyro_msg.h
+/home/smlee/Gyro_ws/src/Gyro/src/Gyro/Gyro_msg.h
 std_msgs/String.h
 /home/smlee/Gyro_ws/src/Gyro/src/std_msgs/String.h
 ros/time.h

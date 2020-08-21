@@ -3,6 +3,6 @@ prefix=/home/smlee/Gyro_ws/devel
 Name: Gyro
 Description: Description of Gyro
 Version: 0.1.0
-Cflags: 
+Cflags: -I/home/smlee/Gyro_ws/devel/include
 Libs: -L${prefix}/lib 
 Requires: 

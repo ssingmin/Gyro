@@ -242,6 +242,12 @@ Gyro_BINARY_DIR:STATIC=/home/smlee/Gyro_ws/build/Gyro
 //Value Computed by CMake
 Gyro_SOURCE_DIR:STATIC=/home/smlee/Gyro_ws/src/Gyro
 
+//Value Computed by CMake
+Gyro_sensor_BINARY_DIR:STATIC=/home/smlee/Gyro_ws/build/Gyro
+
+//Value Computed by CMake
+Gyro_sensor_SOURCE_DIR:STATIC=/home/smlee/Gyro_ws/src/Gyro
+
 //lsb_release executable was found
 LSB_FOUND:BOOL=TRUE
 

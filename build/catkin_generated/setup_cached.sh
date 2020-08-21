@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/home/smlee/Gyro_ws 1/build'
+export PWD='/home/smlee/Gyro_ws/build'
