@@ -14,7 +14,7 @@
 #define RX_packet_lenth 33	//11(packet length) * 3 (number of packet)
 #define TX_packet_lenth 5
 
-#define smleetest 1 //after complete, remove 
+#define portselect 1 //1 = ttyUSB0=1, ttyS1=0
 	
 
 std::string node_name("Gyro_HWT905");
@@ -177,22 +177,22 @@ class Gyro
 				case 0x51:
 					for (i=0;i<3;i++) a[i] = (float)sData[i]/32768.0*16.0;
 					time(&now);
-					printf("\r\nT:%s a:%6.3f %6.3f %6.3f ",asctime(localtime(&now)),a[0],a[1],a[2]);
-					
+					printf("%6.3f, %6.3f, %6.3f, ",a[0],a[1],a[2]);					
 					break;
+
 				case 0x52:
 					for (i=0;i<3;i++) w[i] = (float)sData[i]/32768.0*2000.0;
-					printf("w:%7.3f %7.3f %7.3f ",w[0],w[1],w[2]);					
+					printf("%7.3f, %7.3f, %7.3f, ",w[0],w[1],w[2]);					
 					break;
+
 				case 0x53:
 					for (i=0;i<3;i++) Angle[i] = (float)uData[i]/32768.0*180.0;
-					printf("A:%7.3f %7.3f %7.3f ",Angle[0],Angle[1],Angle[2]);
+					printf("%7.3f, %7.3f, %7.3f, %s ",Angle[0],Angle[1],Angle[2],asctime(localtime(&now)));
 					break;
-				case 0x54:
-					for (i=0;i<3;i++) h[i] = (float)sData[i];
-					printf("h:%4.0f %4.0f %4.0f ",h[0],h[1],h[2]);
-					
-					break;
+
+				default :
+				 	ROS_INFO("error!!!!"); 
+        
 		}		
 
 			gyro_data.a_x = a[0];	//5.1.2 Acceleration Output
@@ -222,21 +222,17 @@ int main(int argc, char **argv)
 	FILE *fp;
 
 
-	#if smleetest
+	#if portselect
   		std::string portName("/dev/ttyUSB0");
 	#elif
 		std::string portName("/dev/ttyS1");
 	#endif
 
 	int baudRate=115200;
-	int count = 0;
 
-	uint8_t HWT905_cmd[TX_packet_lenth] ={0xFF, 0xAA, 0x22, 0x01, 0x00};//sleep cmd testtest
+	//uint8_t HWT905_cmd[TX_packet_lenth] ={0xFF, 0xAA, 0x22, 0x01, 0x00};//sleep cmd testtest
 
  	ros::Rate loop_rate(100);
-	// MsgTutorial 메시지 파일 형식으로 msg 라는 메시지를 선언
-	//ros_tutorials_topic::MsgTutorial msg;
-	// 메시지에 사용될 변수 선언
 
 	Gyro IMUdrvLOC(portName,baudRate);
 
@@ -255,52 +251,6 @@ int main(int argc, char **argv)
     {
 		
 		IMUdrvLOC.readMessage(IMUdrvLOC.PACKET_SIZE);
-		count++;
-		//temp test
-		if(count == 1){
-			count = 0;
-			//  HWT905_cmd[2]=0x27;//test
-			//  HWT905_cmd[3]=0x69;
-			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
-
-			// HWT905_cmd[2]=0x27;//test
-			// HWT905_cmd[3]=0x6A;
-			// IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
-
-			//  HWT905_cmd[2]=0x0a;//Z axis angular velocity bias TESTTEST
-			//  HWT905_cmd[3]=0x0;
-			//  HWT905_cmd[4]=0x0;
-			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
-
-			//  HWT905_cmd[2]=0x3d;//Z axis Angle testtest
-			//  HWT905_cmd[3]=0x0;
-			//  HWT905_cmd[4]=0x0;
-			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
-
-
-			//  HWT905_cmd[2]=0x3e;//Z axis Angle testtest
-			//  HWT905_cmd[3]=0x0;
-			//  HWT905_cmd[4]=0x0;
-			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
-
-
-			//  HWT905_cmd[2]=0x3f;//Z axis Angle testtest
-			//  HWT905_cmd[3]=0x0;
-			//  HWT905_cmd[4]=0x0;
-			//  IMUdrvLOC.sendDatas(HWT905_cmd, TX_packet_lenth);
-
-
-		}
-
-    // 현재 시간을 msg의 하위 stamp 메시지에 담는다
-    // count라는 변수값을 msg의 하위 data 메시지에 담는다
-    
-    //ROS_INFO("send msg = %d", msg.stamp.sec);
-    //ROS_INFO("send msg = %d", msg.stamp.nsec);
-    //ROS_INFO("send msg = %d", msg.data); // stamp.sec 메시지를 표시한다
-    // stamp.nsec 메시지를 표시한다
-    // data 메시지를 표시한다
-    //ros_tutorial_pub.publish(msg); // 메시지를 발행한다
 
     loop_rate.sleep(); // 위에서 정한 루프 주기에 따라 슬립에 들어간다
 }
